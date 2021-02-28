@@ -10,13 +10,13 @@ Widget badge(int count) {
   return Container(
     padding: EdgeInsets.fromLTRB(10, 8, 10, 8),
     decoration: BoxDecoration(
-      color: Colors.orange.withOpacity(0.1),
+      color: Colors.red,
       borderRadius: BorderRadius.circular(12),
     ),
     child: Text(
       count.toString(),
       style: TextStyle(
-        color: UIColors.yellowOrange,
+        color:Colors.white,
         fontSize: 20,
       ),
     ),

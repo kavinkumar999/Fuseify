@@ -24,28 +24,35 @@ class _NotificationsState extends State<Notifications> {
   ];
 
   Widget item({String image}) {
-    return Row(
-      children: <Widget>[
-        ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: Image.asset(image, height: 70, width: 70, fit: BoxFit.cover),
-        ),
-        SizedBox(width: 20),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'Jenny Smith commented on your post: "Brilliant! :)"',
-                style: TextStyle(color: Colors.white, fontSize: 18),
+    return GestureDetector(
+      onTap: () {
+        print(image);
+      },
+          child: Container(
+        child: Row(
+          children: <Widget>[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image.asset(image, height: 70, width: 70, fit: BoxFit.cover),
+            ),
+            SizedBox(width: 20),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Jenny Smith commented on your post: "Brilliant! :)"',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  SizedBox(height: 10),
+                  Text('2 hours ago', style: TextStyle(color: Colors.black))
+                ],
               ),
-              SizedBox(height: 10),
-              Text('2 hours ago', style: TextStyle(color: Colors.black))
-            ],
-          ),
+            ),
+            SizedBox(width: 40),
+          ],
         ),
-        SizedBox(width: 40),
-      ],
+      ),
     );
   }
 
