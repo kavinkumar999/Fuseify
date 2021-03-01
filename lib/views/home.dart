@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fuseify/utils/Colors.dart';
-import 'package:fuseify/utils/HomePanel.dart';
 import 'package:fuseify/utils/common.dart';
+import 'package:fuseify/utils/panel.dart';
 String profile = "Robert" ; 
 class Home extends StatefulWidget {
   @override

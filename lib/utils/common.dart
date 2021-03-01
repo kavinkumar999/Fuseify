@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fuseify/views/intro.dart';
+import 'package:fuseify/views/post.dart';
 import 'package:fuseify/views/scheduledpost.dart';
 
 import 'Colors.dart';
@@ -51,8 +52,9 @@ class PageScaffold extends StatelessWidget {
   );
 
   void navigate(context, String res) {
+    print("press");
     if (res == "post")
-    Navigator.push(context, MaterialPageRoute(builder: (context) => IntroPage(),));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Post(),));
     else if (res =="scheduledpost")
     {
 
