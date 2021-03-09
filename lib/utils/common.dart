@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fuseify/bloc/post/post_bloc.dart';
 import 'package:fuseify/views/intro.dart';
 import 'package:fuseify/views/post.dart';
 import 'package:fuseify/views/scheduledpost.dart';
+import 'package:http/http.dart';
 
 import 'Colors.dart';
 
@@ -54,7 +56,13 @@ class PageScaffold extends StatelessWidget {
   void navigate(context, String res) {
     print("press");
     if (res == "post")
+    {
+      
     Navigator.push(context, MaterialPageRoute(builder: (context) => Post(),));
+
+
+
+    }
     else if (res =="scheduledpost")
     {
 
@@ -95,7 +103,7 @@ class PageScaffold extends StatelessWidget {
 
                     },
                     child: home
-                        ? menuIcon
+                        ? Icon(Icons.notifications_active)
                         : Icon(
                             Icons.chevron_left,
                             color: UIColors.navyBlue,

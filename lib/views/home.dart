@@ -3,15 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:fuseify/utils/Colors.dart';
 import 'package:fuseify/utils/common.dart';
 import 'package:fuseify/utils/panel.dart';
-String profile = "Robert" ; 
+String profile = "kavinkumar" ;
+String username = "kavin_craz"; 
+String photo = "Facebook";
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
- List<List<String>> followersList = [
-    ["Photos", "1110"],
-    ["Followers", "320k"],
-    ["Follows", "3000"]
+ List<List<String>> followersList1 = [
+    ["Photos", "20"],
+    ["Followers", "50"],
+    ["Follows", "30"]
+  ];
+  List<List<String>> followersList2 = [
+    ["Photos", "40"],
+    ["Followers", "58"],
+    ["Follows", "72"]
+  ];
+  List<List<String>> followersList3 = [
+    ["Photos", "25"],
+    ["Followers", "20"],
+    ["Follows", "30"]
   ];
 
 class _HomeState extends State<Home> {
@@ -38,7 +50,7 @@ class _HomeState extends State<Home> {
                 child: HomePanel(
                   label: 'Photos',
                   color: UIColors.softRed,
-                  count: 24,
+                  count: 65,
                 ),
               ),
               SizedBox(width: 10),
@@ -46,7 +58,7 @@ class _HomeState extends State<Home> {
                 child: HomePanel(
                   label: 'Follows',
                   color: Colors.blue,
-                  count: 48,
+                  count: 108,
                 ),
               ),
               SizedBox(width: 10),
@@ -54,7 +66,7 @@ class _HomeState extends State<Home> {
                 child: HomePanel(
                   label: 'Friends',
                   color: UIColors.softPurple,
-                  count: 22,
+                  count: 152,
                 ),
               ),
             ],
@@ -88,6 +100,7 @@ class _HomeState extends State<Home> {
                   setState(() {
                     selected = option;
                     profile = option;
+                    photo = option;
                   });
                   print(selected);
                 },
@@ -106,8 +119,8 @@ class _HomeState extends State<Home> {
         ),
         SingleChildScrollView(
           child: Column(children: [
-            getMyProfile(context,profile),
-            getFollowersBar(context)
+            getMyProfile(context,profile,photo),
+            getFollowersBar(context,photo)
 
           ],),
         )
@@ -117,7 +130,7 @@ class _HomeState extends State<Home> {
     );
   }
 }
- Widget getMyProfile(context,profile) {
+ Widget getMyProfile(context,profile,photo) {
     return Container(
       height: 250,
       color: Color(0xfffbeeef),
@@ -155,7 +168,7 @@ class _HomeState extends State<Home> {
                     child: Image(
                       width: 130,
                       height: 130,
-                      image: AssetImage("assets/profile.jpg"),
+                      image: AssetImage("assets/${photo}.jpg"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -176,7 +189,7 @@ class _HomeState extends State<Home> {
               Container(
                 alignment: Alignment.topCenter,
                 child: Text(
-                  "@iron_man",
+                  "@${username}",
                   maxLines: 1,
                   overflow: TextOverflow.fade,
                   style: TextStyle(
@@ -192,7 +205,21 @@ class _HomeState extends State<Home> {
     );
   }
 
-   Widget getFollowersBar(context) {
+   Widget getFollowersBar(context,photo) {
+     List<dynamic> followersList;
+                  if(photo == "Facebook"){
+                        followersList = followersList1;
+                    }
+                    else if(photo == "Twitter"){
+                        followersList = followersList2; 
+                    }
+                    else {
+                        followersList = followersList3;
+                    }
+     print(followersList);
+     print(followersList1);
+    //  print();
+    //  print(Type(followersList));
     return Container(
       height: 150,
       width: MediaQuery.of(context).size.width,
@@ -213,6 +240,7 @@ class _HomeState extends State<Home> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: followersList.toList().map((element) {
+                print(element);
                 return Column(
                   children: <Widget>[
                     Text(

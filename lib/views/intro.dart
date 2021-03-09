@@ -62,15 +62,15 @@ class _IntroPageState extends State<IntroPage> {
                         borderRadius: BorderRadius.only(topLeft: radius)),
                     child: Column(
                       children: <Widget>[
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: FlatButton(
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Home(),));
-                            },
-                            child: Text("skip",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),) ,
-                          ),
-                        ),
+                        // Align(
+                        //   alignment: Alignment.topRight,
+                        //   child: FlatButton(
+                        //     onPressed: () {
+                        //       Navigator.push(context, MaterialPageRoute(builder: (context) => Home(),));
+                        //     },
+                        //     child: Text("skip",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,letterSpacing: 2),) ,
+                        //   ),
+                        // ),
                         Center(
                           child: Container(
                             child: Image(

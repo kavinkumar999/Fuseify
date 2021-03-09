@@ -16,10 +16,10 @@ class _NotificationsState extends State<Notifications> {
     'assets/posts/5.jpg',
     'assets/posts/1.jpg',
     'assets/posts/4.jpg',
-    'assets/posts/4.jpg',
-    'assets/posts/4.jpg',
-    'assets/posts/4.jpg',
-    'assets/posts/4.jpg',
+    'assets/posts/3.jpg',
+    'assets/posts/5.jpg',
+    'assets/posts/1.jpg',
+    'assets/posts/3.jpg',
     'assets/posts/4.jpg',
   ];
 
@@ -41,7 +41,7 @@ class _NotificationsState extends State<Notifications> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'Jenny Smith commented on your post: "Brilliant! :)"',
+                    'Hi, I m kavin kumar from Computer science and Engineering ! :)"',
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   SizedBox(height: 10),
@@ -62,7 +62,7 @@ class _NotificationsState extends State<Notifications> {
       onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
       child: PageScaffold(
         backgroundColor: Colors.white,
-        title: 'Scheduled Post',
+        title: 'Posts',
         badge: badge(12),
         children: <Widget>[
           // Padding(
