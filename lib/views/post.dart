@@ -13,8 +13,7 @@ class Post extends StatefulWidget {
   @override
   _PostState createState() => _PostState();
 }
-
-File _image;
+    File _image;
 
 class _PostState extends State<Post> {
   final picker = ImagePicker();
@@ -45,148 +44,180 @@ class _PostState extends State<Post> {
           // TODO: implement listener
         },
         builder: (context, state) {
-          return SafeArea(
-        bottom: false,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.fromLTRB(padding, 30, padding, 6),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.chevron_left,
-                        size: 50,
-                      )),
-                  InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.cancel,
-                        size: 50,
-                      )),
-                ],
-              ),
-            ),
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: <Widget>[
-                  SizedBox(height: 40),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: padding),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Create a Post",
-                          style: TextStyle(
-                            fontSize: 38,
-                            color: UIColors.navyBlue,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1.2,
-                          ),
+          String imgname;
+          if(state is Uploadstarted){
+            return Center(child: Scaffold(
+              backgroundColor: Colors.transparent,
+              body: CircularProgressIndicator()));
+          }
+                    return SafeArea(
+                  bottom: false,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(padding, 30, padding, 6),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Icon(
+                                  Icons.chevron_left,
+                                  size: 50,
+                                )),
+                            InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Icon(
+                                  Icons.cancel,
+                                  size: 50,
+                                )),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    height: height * 0.40,
-                    width: width,
-                    child: _image == null
-                        ? Icon(
-                            Icons.photo,
-                            size: 100,
-                          )
-                        : Image.file(_image),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      FloatingActionButton(
-                        heroTag: "1",
-                        onPressed: getImage,
-                        tooltip: "Pick Image",
-                        child: Icon(Icons.add_a_photo),
                       ),
-                      FloatingActionButton(
-                        onPressed: () {
-                          setState(() {
-                            // final bytes =  File(_image).readAsBytes();
-                            // String base64Encode(List<int> bytes) => base64.encode(_image);
-                            List<int> imagebytes = _image.readAsBytesSync();
-                            String here = base64Encode(imagebytes);
-                            print(here);
-                            String bn = base64Encode(_image.readAsBytesSync());
-                            temp.addimage(here.toString(), _controller.text);
-                            print(bn);
-                            // _image = null;
-                          });
-                        },
-                        heroTag: "2",
-                        tooltip: "Cancel",
-                        child: Icon(Icons.cancel),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      height: 200,
-                      // decoration: BoxDecoration(
-                      //   // border: Border.all(color: Colors.black),
-                      //   // borderRadius: BorderRadius.circular(10),
-                      // ),
-                      color: Color(0xffeeeeee),
-                      padding: EdgeInsets.all(10.0),
-                      child: new ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxHeight: 200.0,
-                        ),
-                        child: new Scrollbar(
-                          child: new SingleChildScrollView(
-                            scrollDirection: Axis.vertical,
-                            reverse: true,
-                            child: SizedBox(
-                              height: 190.0,
-                              child: new TextField(
-                                controller: _controller,
-                                maxLines: 100,
-                                decoration: new InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Add your caption here',
+                      Expanded(
+                        child: ListView(
+                          padding: EdgeInsets.zero,
+                          children: <Widget>[
+                            SizedBox(height: 40),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: padding),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Create a Post",
+                                    style: TextStyle(
+                                      fontSize: 38,
+                                      color: UIColors.navyBlue,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 1.2,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Container(
+                              height: height * 0.40,
+                              width: width,
+                              child: _image == null
+                                  ? Icon(
+                                      Icons.photo,
+                                      size: 100,
+                                    )
+                                  : Image.file(_image),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                FloatingActionButton(
+                                  heroTag: "1",
+                                  onPressed: getImage,
+                                  tooltip: "Pick Image",
+                                  child: Icon(Icons.add_a_photo),
+                                ),
+                                FloatingActionButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      // final bytes =  File(_image).readAsBytes();
+                                      // String base64Encode(List<int> bytes) => base64.encode(_image);
+                                      
+                                      // print(here);
+                                      // temp.uploaddata(here.toString(), _controller.text);
+                                      // print(bn);
+                                      _image = null;
+                                    });
+                                  },
+                                  heroTag: "2",
+                                  tooltip: "Cancel",
+                                  child: Icon(Icons.cancel),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Container(
+                                height: 200,
+                                // decoration: BoxDecoration(
+                                //   // border: Border.all(color: Colors.black),
+                                //   // borderRadius: BorderRadius.circular(10),
+                                // ),
+                                color: Color(0xffeeeeee),
+                                padding: EdgeInsets.all(10.0),
+                                child: new ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxHeight: 200.0,
+                                  ),
+                                  child: new Scrollbar(
+                                    child: new SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      reverse: true,
+                                      child: SizedBox(
+                                        height: 190.0,
+                                        child: new TextField(
+                                          controller: _controller,
+                                          maxLines: 100,
+                                          decoration: new InputDecoration(
+                                            border: InputBorder.none,
+                                            hintText: 'Add your caption here',
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    // width: 50,
-                    padding: EdgeInsets.only(
-                        left: width * 0.25, right: width * 0.25),
-                    // height: 50,
-                    child: FlatButton(
-                      // elevation: 15,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30)),
-                      onPressed: () => {
-                        // BlocProvider.of<EntryBloc>(context)..add(Cancelpressed()),
+                            // Container(
+                            //   // width: 50,
+                            //   padding: EdgeInsets.only(
+                            //       left: width * 0.25, right: width * 0.25),
+                            //   // height: 50,
+                            //   child: FlatButton(
+                            //     // elevation: 15,
+                            //     shape: RoundedRectangleBorder(
+                            //         borderRadius: BorderRadius.circular(30)),
+                            //     onPressed: () => {
+                            //       // List <int> byte = ,
+                            //           // String bn = base64Encode(_image.readAsBytesSync())
+                            //         // _image = null,
+                            //       // // List<int> imagebytes = _image.readAsBytesSync(),
+                            //       //     String here = base64Encode(imagebytes)
+                            //       // BlocProvider.of<PostBloc>(context)..add(UploadingEvent(base64Encode(_image.readAsBytesSync())))
+                            //     },
+                            //     color: Colors.pink,
+                            //     child: Text(
+                            //       'Upload',
+                            //       style: TextStyle(color: Colors.white, fontSize: 20),
+                            //     ),
+                            //   ),
+                            // ),
+                            // SizedBox(height: 20,),
+                            Padding(
+                              // width: 50,
+                              padding: EdgeInsets.only(
+                                  left: width * 0.25, right: width * 0.25),
+                              // height: 50,
+                              child: FlatButton(
+                                // elevation: 15,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30)),
+                                onPressed: () => {
+                                  imgname = _image.path.split("/").last,
+                                  // imgname = "image.jpg",
+                                  print("pressed"),
+                        BlocProvider.of<PostBloc>(context)..add(UploadingEvent(base64Encode(_image.readAsBytesSync()),imgname,_controller.text)),
                       },
                       color: Colors.pink,
                       child: Text(
