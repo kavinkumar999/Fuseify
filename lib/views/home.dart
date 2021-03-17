@@ -218,8 +218,6 @@ class _HomeState extends State<Home> {
                     }
      print(followersList);
      print(followersList1);
-    //  print();
-    //  print(Type(followersList));
     return Container(
       height: 150,
       width: MediaQuery.of(context).size.width,

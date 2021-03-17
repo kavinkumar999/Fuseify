@@ -22,3 +22,7 @@ class Uploadingstop extends PostState{}
 
 
 class Uploaded extends PostState{}
+
+class Postimage extends PostState{}
+
+class Posttext extends PostState{}

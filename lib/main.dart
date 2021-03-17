@@ -1,12 +1,18 @@
+
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fuseify/bloc/post/post_bloc.dart';
+import 'package:fuseify/bloc/post_provision/post_provision_bloc.dart';
 import 'package:fuseify/views/intro.dart';
 
 void main() {
-  runApp(BlocProvider(
-    create: (context) => PostBloc(),
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(create: (context) => PostBloc()),
+      BlocProvider(create: (context) => PostProvisionBloc()),
+
+    ],
     child: MyApp(),
   ));
 }

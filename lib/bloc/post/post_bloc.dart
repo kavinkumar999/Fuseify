@@ -17,10 +17,8 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   ) async* {
     // TODO: implement mapEventToState
     if (event is UploadingEvent) {
-      print("started");
       yield Uploadstarted();
-      String docName =  await api.create_record(event.caption) ;
-      print(docName);
+      String docName =  await api.create_record(event.caption,event.facebook,event.instagram,event.twitter) ;
       if (docName == "error") {
         yield Uploadingstop();
       } else {
@@ -35,6 +33,14 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       yield Postingstop();
       yield PostingImage();
       yield Posted();
+    }
+    if (event is PostProvision){
+      if(event.select == 1){
+        yield Postimage();
+      }
+      else{
+        yield Posttext();
+      }
     }
   }
 }
