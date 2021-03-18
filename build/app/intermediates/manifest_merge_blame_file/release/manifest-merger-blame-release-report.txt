@@ -1,0 +1,112 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.fuseify"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+8-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+11-->[:image_picker] /home/kavin/Desktop/flutternew/fuseify/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:7:5-80
+11-->[:image_picker] /home/kavin/Desktop/flutternew/fuseify/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:7:22-77
+12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+12-->[:image_picker] /home/kavin/Desktop/flutternew/fuseify/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:8:5-81
+12-->[:image_picker] /home/kavin/Desktop/flutternew/fuseify/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:8:22-78
+13
+14    <application
+14-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:3:4-41:19
+15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+15-->[androidx.core:core:1.1.0] /home/kavin/.gradle/caches/transforms-2/files-2.1/a528b13ac93e64cafa3d0480e2c93207/core-1.1.0/AndroidManifest.xml:24:18-86
+16        android:icon="@mipmap/ic_launcher"
+16-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:6:9-43
+17        android:label="fuseify"
+17-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:5:9-32
+18        android:requestLegacyExternalStorage="true" >
+18-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:4:9-52
+19        <activity
+19-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:7:9-35:20
+20            android:name="com.example.fuseify.MainActivity"
+20-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:8:13-41
+21            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+21-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:11:13-163
+22            android:hardwareAccelerated="true"
+22-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:12:13-47
+23            android:launchMode="singleTop"
+23-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:9:13-43
+24            android:theme="@style/LaunchTheme"
+24-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:10:13-47
+25            android:windowSoftInputMode="adjustResize" >
+25-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:13:13-55
+26
+27            <!--
+28                 Specifies an Android theme to apply to this Activity as soon as
+29                 the Android process has started. This theme is visible to the user
+30                 while the Flutter UI initializes. After that, this theme continues
+31                 to determine the Window background behind the Flutter UI.
+32            -->
+33            <meta-data
+33-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:18:13-21:17
+34                android:name="io.flutter.embedding.android.NormalTheme"
+34-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:19:15-70
+35                android:resource="@style/NormalTheme" />
+35-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:20:15-52
+36            <!--
+37                 Displays an Android View that continues showing the launch screen
+38                 Drawable until Flutter paints its first frame, then this splash
+39                 screen fades out. A splash screen is useful to avoid any visual
+40                 gap between the end of Android's launch screen and the painting of
+41                 Flutter's first frame.
+42            -->
+43            <meta-data
+43-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:27:13-30:17
+44                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+44-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:28:15-79
+45                android:resource="@drawable/launch_background" />
+45-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:29:15-61
+46
+47            <intent-filter>
+47-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:31:13-34:29
+48                <action android:name="android.intent.action.MAIN" />
+48-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:32:17-68
+48-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:32:25-66
+49
+50                <category android:name="android.intent.category.LAUNCHER" />
+50-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:33:17-76
+50-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:33:27-74
+51            </intent-filter>
+52        </activity>
+53        <!--
+54             Don't delete the meta-data below.
+55             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+56        -->
+57        <meta-data
+57-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:38:9-40:33
+58            android:name="flutterEmbedding"
+58-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:39:13-44
+59            android:value="2" />
+59-->/home/kavin/Desktop/flutternew/fuseify/android/app/src/main/AndroidManifest.xml:40:13-30
+60
+61        <provider
+61-->[:image_picker] /home/kavin/Desktop/flutternew/fuseify/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:11:9-19:20
+62            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+62-->[:image_picker] /home/kavin/Desktop/flutternew/fuseify/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:12:13-82
+63            android:authorities="com.example.fuseify.flutter.image_provider"
+63-->[:image_picker] /home/kavin/Desktop/flutternew/fuseify/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:13:13-74
+64            android:exported="false"
+64-->[:image_picker] /home/kavin/Desktop/flutternew/fuseify/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:14:13-37
+65            android:grantUriPermissions="true" >
+65-->[:image_picker] /home/kavin/Desktop/flutternew/fuseify/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:15:13-47
+66            <meta-data
+66-->[:image_picker] /home/kavin/Desktop/flutternew/fuseify/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:16:13-18:75
+67                android:name="android.support.FILE_PROVIDER_PATHS"
+67-->[:image_picker] /home/kavin/Desktop/flutternew/fuseify/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:17:17-67
+68                android:resource="@xml/flutter_image_picker_file_paths" />
+68-->[:image_picker] /home/kavin/Desktop/flutternew/fuseify/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:18:17-72
+69        </provider>
+70    </application>
+71
+72</manifest>

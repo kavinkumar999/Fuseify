@@ -1,11 +1,11 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
 class Endpoint {
-  var key = "token " + "1d2c48f45385e2e" + ":" + "a6e278617a87b81";
+  // var keye = Process.data.url;
 
-  final String url = "http://10.0.2.2:8002/api/method/postal_hub.postal_hub.doctype.postal_post.postal_post";
 
   Future<void> uploaddata(String byte,String imagename,String doc) async {
     
@@ -30,13 +30,24 @@ class Endpoint {
       print(response.statusCode);
     // print(data.statusCode);
   }
+  Future<List<dynamic> > facebookpost() async {
+    final http.Response post = await http.get(url,headers: {'Authorization': key.toString()});
+    if(post.statusCode == 200){
+      return jsonDecode(post.body)["message"];
 
-  Future<String> create_record(String caption) async{
+    }
+    else{
+      print("error");
+      return [];
+    }
+  }
+
+  Future<String> create_record(String caption, bool fb , bool insta, bool tweet) async{
    
       final http.Response data = await http.post(
         url +".created_doc",
         headers: {'Authorization': key.toString()},
-        body: {"caption":caption});
+        body: {"caption":caption,"facebook":fb,"insta":insta,"tweet":tweet});
       print(data.statusCode);
       print(jsonDecode(data.body)["message"]);
       if (data.statusCode == 200 ){
