@@ -5,6 +5,9 @@ abstract class StackState {}
 
 class StackInitial extends StackState {}
 
+class Allpost extends StackState{}
+
+
 class Facebook extends StackState{}
 
 class Instagram extends StackState{}

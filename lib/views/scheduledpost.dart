@@ -112,9 +112,21 @@ class _NotificationsState extends State<Notifications> {
             
           },
           builder: (context, state) {
+            if(state is Allpost){
+              currentFilter = "All Posted";
+
+            }
             if(state is Facebook){
               images = ["assets/connect.jpg"];
+              currentFilter = "Facebook";
+            }
+            if(state is Twitter){
               currentFilter = "Twitter";
+
+            }
+            if(state is Instagram){
+              currentFilter = "Instagram";
+
             }
             
             return Column(
@@ -176,11 +188,7 @@ class _NotificationsState extends State<Notifications> {
                     ),
                   ),
                   SizedBox(height: 10),
-                  GestureDetector(
-                    onTap: () {
-                      BlocProvider.of<StackBloc>(context)..add(Mediaoption("Facebook"));
-                    },
-                                      child: Container(
+                  Container(
             height: 20,
             margin: EdgeInsets.fromLTRB(padding, 15, padding, 20),
             child: ListView.separated(
@@ -188,20 +196,28 @@ class _NotificationsState extends State<Notifications> {
               itemCount: filters.length,
               separatorBuilder: (_, __) => SizedBox(width: 40),
               itemBuilder: (context, index) {
+                
                 final filter = filters[index];
                 bool active = currentFilter == filter;
-                return Text(
-                    filter.toUpperCase(),
-                    style: TextStyle(
-                      color: active ? UIColors.navyBlue : Colors.grey.shade400,
-                      fontSize: 18,
-                      letterSpacing: 0.4,
+                return GestureDetector(
+                  onTap: (){
+                    print(filter);
+                    BlocProvider.of<StackBloc>(context)..add(Mediaoption(filter));
+                  },
+                                  child: Container(
+                    child: Text(
+                        filter.toUpperCase(),
+                        style: TextStyle(
+                          color: active ? UIColors.navyBlue : Colors.grey.shade400,
+                          fontSize: 18,
+                          letterSpacing: 0.4,
+                        ),
                     ),
+                  ),
                 );
               },
             ),
           ),
-                  ),
           SingleChildScrollView(
                       child: Container(
               height: MediaQuery.of(context).size.height,

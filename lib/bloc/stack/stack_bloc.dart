@@ -23,8 +23,11 @@ class StackBloc extends Bloc<StackEvent, StackState> {
       {
         yield Instagram();
       }
-      else{
+      else if(event.media == "Twitter"){
         yield Twitter();
+      }
+      else{
+        yield Allpost();
       }
     }
   }
