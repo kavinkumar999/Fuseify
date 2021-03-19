@@ -66,7 +66,7 @@ class PageScaffold extends StatelessWidget {
     else if (res =="scheduledpost")
     {
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Notifications(),));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Notifications(),));
 
     }
 

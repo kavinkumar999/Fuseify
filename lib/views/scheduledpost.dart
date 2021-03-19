@@ -1,17 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fuseify/bloc/stack/stack_bloc.dart';
 import 'package:fuseify/utils/Colors.dart';
 import 'package:fuseify/utils/common.dart';
+import 'package:fuseify/views/post.dart';
 
+Widget badge(int count) {
+  return Container(
+    padding: EdgeInsets.fromLTRB(10, 8, 10, 8),
+    decoration: BoxDecoration(
+      color: Colors.red,
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: Text(
+      count.toString(),
+      style: TextStyle(
+        color:Colors.white,
+        fontSize: 20,
+      ),
+    ),
+  );
+}
+void navigate(context, String res) {
+    print("press");
+    if (res == "post")
+    {
+      
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Post(),));
+
+
+
+    }
+    else if (res =="scheduledpost")
+    {
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Notifications(),));
+
+    }
+
+    else{
+      Navigator.pop(context);
+
+    }
+  }
 class Notifications extends StatefulWidget {
   @override
   _NotificationsState createState() => _NotificationsState();
 }
 
 class _NotificationsState extends State<Notifications> {
-  final filters = ["All Post"];
-  String currentFilter = "All Post";
+  final filters = ["All Posted","Facebook","Twitter","Instagram"];
+  String currentFilter = "All Posted";
 
-  final images = [
+  List images = [
     'assets/posts/3.jpg',
     'assets/posts/5.jpg',
     'assets/posts/1.jpg',
@@ -60,33 +101,86 @@ class _NotificationsState extends State<Notifications> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
-      child: PageScaffold(
-        backgroundColor: Colors.white,
-        title: 'Posts',
-        badge: badge(12),
-        children: <Widget>[
-          // Padding(
-          //   padding: EdgeInsets.all(padding),
-          //   child: TextField(
-          //     decoration: InputDecoration(
-          //       filled: true,
-          //       fillColor: UIColors.s,
-          //       contentPadding: EdgeInsets.all(20),
-          //       prefixIcon: Icon(
-          //         Icons.search,
-          //         color: UIColors.navyBlue,
-          //         size: 26,
-          //       ),
-          //       hintText: 'Search for name',
-          //       hintStyle: TextStyle(fontSize: 20, color: Colors.grey.shade400),
-          //       border: UnderlineInputBorder(
-          //         borderSide: BorderSide.none,
-          //         borderRadius: BorderRadius.circular(12),
-          //       ),
-          //     ),
-          //   ),
-          // ),
-          Container(
+      child: Scaffold(
+        
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        bottom: false,
+        child: BlocConsumer<StackBloc, StackState>(
+          listener: (context, state) {
+            // TODO: implement listener
+            
+          },
+          builder: (context, state) {
+            if(state is Facebook){
+              images = ["assets/connect.jpg"];
+              currentFilter = "Twitter";
+            }
+            
+            return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(padding, 30, padding, 6),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  InkWell(
+                    onTap: () => {
+                      if(false){
+                          navigate(context, "scheduledpost")
+                      }
+                      else{
+                        navigate(context, "res")
+                      }
+                      
+
+                    },
+                    child:Icon(
+                            Icons.chevron_left,
+                            color: UIColors.navyBlue,
+                            size: 30,
+                          ),
+                  ),
+                  InkWell(
+                    onTap: () => navigate(context, "post"),
+                    child: Icon(Icons.add_circle,size: 50,)
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  SizedBox(height: 40),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: padding),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Post",
+                          style: TextStyle(
+                            fontSize: 38,
+                            color: UIColors.navyBlue,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                        SizedBox(width: 20),
+                        // badge ?? SizedBox(),
+                        badge(12),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () {
+                      BlocProvider.of<StackBloc>(context)..add(Mediaoption("Facebook"));
+                    },
+                                      child: Container(
             height: 20,
             margin: EdgeInsets.fromLTRB(padding, 15, padding, 20),
             child: ListView.separated(
@@ -97,16 +191,17 @@ class _NotificationsState extends State<Notifications> {
                 final filter = filters[index];
                 bool active = currentFilter == filter;
                 return Text(
-                  filter.toUpperCase(),
-                  style: TextStyle(
-                    color: active ? UIColors.navyBlue : Colors.grey.shade400,
-                    fontSize: 18,
-                    letterSpacing: 0.4,
-                  ),
+                    filter.toUpperCase(),
+                    style: TextStyle(
+                      color: active ? UIColors.navyBlue : Colors.grey.shade400,
+                      fontSize: 18,
+                      letterSpacing: 0.4,
+                    ),
                 );
               },
             ),
           ),
+                  ),
           SingleChildScrollView(
                       child: Container(
               height: MediaQuery.of(context).size.height,
@@ -128,8 +223,24 @@ class _NotificationsState extends State<Notifications> {
               ),
             ),
           ),
-        ],
+                  
+                ],
+              ),
+            ),
+          ],
+        );
+          },
+        )
+        
+        
       ),
+    ),
+      
+      
+      
+      
+      
+      
     );
   }
 }
