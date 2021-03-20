@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +12,6 @@ void main() {
       BlocProvider(create: (context) => PostBloc()),
       BlocProvider(create: (context) => PostProvisionBloc()),
       BlocProvider(create: (context) => StackBloc()),
-
     ],
     child: MyApp(),
   ));
@@ -55,4 +52,3 @@ class _StarterState extends State<Starter> {
     );
   }
 }
-

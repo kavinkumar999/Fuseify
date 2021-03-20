@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fuseify/bloc/post/post_bloc.dart';
-import 'package:fuseify/views/intro.dart';
 import 'package:fuseify/views/post.dart';
 import 'package:fuseify/views/scheduledpost.dart';
-import 'package:http/http.dart';
 
 import 'Colors.dart';
 
@@ -19,7 +16,7 @@ Widget badge(int count) {
     child: Text(
       count.toString(),
       style: TextStyle(
-        color:Colors.white,
+        color: Colors.white,
         fontSize: 20,
       ),
     ),
@@ -55,24 +52,20 @@ class PageScaffold extends StatelessWidget {
 
   void navigate(context, String res) {
     print("press");
-    if (res == "post")
-    {
-      
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Post(),));
-
-
-
-    }
-    else if (res =="scheduledpost")
-    {
-
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Notifications(),));
-
-    }
-
-    else{
+    if (res == "post") {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Post(),
+          ));
+    } else if (res == "scheduledpost") {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Notifications(),
+          ));
+    } else {
       Navigator.pop(context);
-
     }
   }
 
@@ -93,14 +86,10 @@ class PageScaffold extends StatelessWidget {
                 children: <Widget>[
                   InkWell(
                     onTap: () => {
-                      if(home){
-                          navigate(context, "scheduledpost")
-                      }
-                      else{
-                        navigate(context, "res")
-                      }
-                      
-
+                      if (home)
+                        {navigate(context, "scheduledpost")}
+                      else
+                        {navigate(context, "res")}
                     },
                     child: home
                         ? Icon(Icons.notifications_active)
@@ -111,9 +100,11 @@ class PageScaffold extends StatelessWidget {
                           ),
                   ),
                   InkWell(
-                    onTap: () => navigate(context, "post"),
-                    child: Icon(Icons.add_circle,size: 50,)
-                  ),
+                      onTap: () => navigate(context, "post"),
+                      child: Icon(
+                        Icons.add_circle,
+                        size: 50,
+                      )),
                 ],
               ),
             ),
