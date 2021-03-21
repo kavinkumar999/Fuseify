@@ -68,6 +68,12 @@
       "languageVersion": "2.6"
     },
     {
+      "name": "flutter_config",
+      "rootUri": "file:///home/kavin/Downloads/flutter-sdk/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_config-1.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "flutter_plugin_android_lifecycle",
       "rootUri": "file:///home/kavin/Downloads/flutter-sdk/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.11",
       "packageUri": "lib/",
@@ -206,7 +212,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-03-17T08:13:59.852434Z",
+  "generated": "2021-03-21T14:22:10.861971Z",
   "generator": "pub",
   "generatorVersion": "2.12.0"
 }
