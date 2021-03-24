@@ -1,13 +1,19 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_config/flutter_config.dart';
 import 'package:fuseify/bloc/post/post_bloc.dart';
 import 'package:fuseify/bloc/post_provision/post_provision_bloc.dart';
 import 'package:fuseify/bloc/stack/stack_bloc.dart';
 import 'package:fuseify/views/intro.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized(); 
+  await FlutterConfig.loadEnvVariables();
+  await DotEnv.load(fileName: ".env");
   runApp(MultiBlocProvider(
+
     providers: [
       BlocProvider(create: (context) => PostBloc()),
       BlocProvider(create: (context) => PostProvisionBloc()),
@@ -21,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      // debugShowCheckedModeBanner: false,
       color: Colors.white,
       theme: ThemeData(
         fontFamily: 'ProductSans',

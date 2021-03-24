@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
 import 'package:fuseify/data_layer/data.dart';
 import 'package:meta/meta.dart';
 
@@ -17,15 +19,28 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   ) async* {
     // TODO: implement mapEventToState
     if (event is UploadingEvent) {
+  WidgetsFlutterBinding.ensureInitialized(); 
+  
+  await FlutterConfig.loadEnvVariables();
+  print(FlutterConfig.variables);
+  print(FlutterConfig.get("emi"));
+
+
+
       yield Uploadstarted();
       String docName =  await api.create_record(event.caption,event.facebook,event.instagram,event.twitter) ;
       if (docName == "error") {
         yield Uploadingstop();
       } else {
-         await api.uploaddata(event.base64,event.imagename,docName);
-        await api.update_to_field(docName, event.imagename);
-        yield Uploading();
-        yield Uploaded();
+        if(event.image)
+        {
+          yield Uploading();
+          await api.uploaddata(event.base64,event.imagename,docName);
+          await api.update_to_field(docName, event.imagename);
+          yield Uploaded();
+
+        }
+        
       }
     }
     if (event is PostingEvent) {

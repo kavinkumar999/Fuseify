@@ -12,6 +12,7 @@ class UploadingEvent extends PostEvent{
   bool facebook;
   bool instagram;
   bool twitter;
+  bool image;
 
   UploadingEvent(
     this.base64,
@@ -19,7 +20,8 @@ class UploadingEvent extends PostEvent{
     this.caption,
     this.facebook,
     this.instagram,
-    this.twitter
+    this.twitter,
+    this.image
   );
 }
 

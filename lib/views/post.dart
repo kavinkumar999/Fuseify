@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fuseify/bloc/post/post_bloc.dart';
@@ -53,11 +52,11 @@ class _PostState extends State<Post> {
         },
         builder: (context, state) {
           String imgname;
-          if(state is Uploadstarted){
-            return Center(child: Scaffold(
-              backgroundColor: Colors.transparent,
-              body: Center(child: CircularProgressIndicator())));
-          }
+          // if(state is Uploadstarted){
+          //   return Center(child: Scaffold(
+          //     backgroundColor: Colors.transparent,
+          //     body: Center(child: CircularProgressIndicator())));
+          // }
           if(state is Postimage){
             return SafeArea(
                   bottom: false,
@@ -172,12 +171,6 @@ class _PostState extends State<Post> {
                                 FloatingActionButton(
                                   onPressed: () {
                                     setState(() {
-                                      // final bytes =  File(_image).readAsBytes();
-                                      // String base64Encode(List<int> bytes) => base64.encode(_image);
-                                      
-                                      // print(here);
-                                      // temp.uploaddata(here.toString(), _controller.text);
-                                      // print(bn);
                                       _image = null;
                                     });
                                   },
@@ -233,17 +226,10 @@ class _PostState extends State<Post> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30)),
                                 onPressed: () => {
-                                  // List <int> byte = ,
-                                      // String bn = base64Encode(_image.readAsBytesSync())
-                                    // _image = null,
-                                  // // List<int> imagebytes = _image.readAsBytesSync(),
-                                  //     String here = base64Encode(imagebytes)
-                                  // BlocProvider.of<PostBloc>(context)..add(UploadingEvent(base64Encode(_image.readAsBytesSync())))
-                                  //imgname = _image.path.split("/").last,
-                                  // imgname = "image.jpg",
+                                  imgname = _image.path.split("/").last,
                                   showDialog(
                                     context: context, builder: (BuildContext context){
-                                      return CustomDialogBox(basee64: "fd",imagename: "asdf",text: "afsd",);
+                                      return CustomDialogBox(basee64: base64Encode(_image.readAsBytesSync()),imagename: imgname,text: _controller.text,img: true,);
                                     }),
                                   
                                   // BlocProvider.of<PostBloc>(context)..add(UploadingEvent(base64Encode(_image.readAsBytesSync()),imgname,_controller.text)),
@@ -360,10 +346,6 @@ class _PostState extends State<Post> {
                               padding: const EdgeInsets.all(20.0),
                               child: Container(
                                 height: 200,
-                                // decoration: BoxDecoration(
-                                //   // border: Border.all(color: Colors.black),
-                                //   // borderRadius: BorderRadius.circular(10),
-                                // ),
                                 color: Color(0xffeeeeee),
                                 padding: EdgeInsets.all(10.0),
                                 child: new ConstrainedBox(
@@ -401,17 +383,13 @@ class _PostState extends State<Post> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30)),
                                 onPressed: () => {
-                                  // List <int> byte = ,
-                                      // String bn = base64Encode(_image.readAsBytesSync())
-                                    // _image = null,
-                                  // // List<int> imagebytes = _image.readAsBytesSync(),
-                                  //     String here = base64Encode(imagebytes)
-                                  // BlocProvider.of<PostBloc>(context)..add(UploadingEvent(base64Encode(_image.readAsBytesSync())))
-                                  //imgname = _image.path.split("/").last,
-                                  // imgname = "image.jpg",
+                                  imgname = _image.path.split("/").last,
+
                                   showDialog(
                                     context: context, builder: (BuildContext context){
-                                      return CustomDialogBox(basee64: "fd",imagename: "asdf",text: "afsd",);
+                                      return CustomDialogBox(basee64: base64Encode(_image.readAsBytesSync()),imagename: imgname,text: _controller.text,img: false,);
+
+
                                     }),
                                     print("object"),
                                   
@@ -561,10 +539,6 @@ class _PostState extends State<Post> {
                               padding: const EdgeInsets.all(20.0),
                               child: Container(
                                 height: 200,
-                                // decoration: BoxDecoration(
-                                //   // border: Border.all(color: Colors.black),
-                                //   // borderRadius: BorderRadius.circular(10),
-                                // ),
                                 color: Color(0xffeeeeee),
                                 padding: EdgeInsets.all(10.0),
                                 child: new ConstrainedBox(
@@ -602,20 +576,14 @@ class _PostState extends State<Post> {
                                 // elevation: 15,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30)),
+                                    
                                 onPressed: () => {
-                                  // List <int> byte = ,
-                                      // String bn = base64Encode(_image.readAsBytesSync())
-                                    // _image = null,
-                                  // // List<int> imagebytes = _image.readAsBytesSync(),
-                                  //     String here = base64Encode(imagebytes)
-                                  // BlocProvider.of<PostBloc>(context)..add(UploadingEvent(base64Encode(_image.readAsBytesSync())))
-                                  //imgname = _image.path.split("/").last,
-                                  // imgname = "image.jpg",
+                                  imgname = _image.path.split("/").last,
                                   showDialog(
                                     context: context, builder: (BuildContext context){
-                                      return CustomDialogBox(basee64: "fd",imagename: "asdf",text: "afsd",);
+                                      return CustomDialogBox(basee64: base64Encode(_image.readAsBytesSync()),imagename: imgname,text: _controller.text,img: true,);
+
                                     }),
-                                  print("createdd"),
                                   // BlocProvider.of<PostBloc>(context)..add(UploadingEvent(base64Encode(_image.readAsBytesSync()),imgname,_controller.text)),
 
                                 },

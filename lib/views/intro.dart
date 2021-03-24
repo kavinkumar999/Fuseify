@@ -37,40 +37,23 @@ class _IntroPageState extends State<IntroPage> {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Colors.white70,Colors.white70],
+                  colors: [Colors.white70, Colors.white70],
                 ),
               ),
               height: MediaQuery.of(context).size.height,
               child: Stack(
                 children: <Widget>[
-                  
                   Container(
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           stops: [.4, 1],
-                          colors: [
-                            Colors.white70,
-                            Colors.white70
-
-
-                            // Color(0xfff4cdd9),
-                            // Colors.green
-                          ],
+                          colors: [Colors.white70, Colors.white70],
                         ),
                         borderRadius: BorderRadius.only(topLeft: radius)),
                     child: Column(
                       children: <Widget>[
-                        // Align(
-                        //   alignment: Alignment.topRight,
-                        //   child: FlatButton(
-                        //     onPressed: () {
-                        //       Navigator.push(context, MaterialPageRoute(builder: (context) => Home(),));
-                        //     },
-                        //     child: Text("skip",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,letterSpacing: 2),) ,
-                        //   ),
-                        // ),
                         Center(
                           child: Container(
                             child: Image(
@@ -80,7 +63,6 @@ class _IntroPageState extends State<IntroPage> {
                             ),
                           ),
                         ),
-
                         const SizedBox(height: 55),
                         Expanded(
                           flex: 2,
@@ -89,28 +71,21 @@ class _IntroPageState extends State<IntroPage> {
                               itemCount: 4,
                               physics: AlwaysScrollableScrollPhysics(),
                               controller: _controller,
-                              
                               onPageChanged: (index1) {
-                              
                                 setState(() {
-                                  if(index1 == 0){
-                                  progressvalue = 0.25;
-                                  }
-                                  else if(index1 == 1){
+                                  if (index1 == 0) {
+                                    progressvalue = 0.25;
+                                  } else if (index1 == 1) {
                                     progressvalue = 0.50;
-                                  }
-                                  else if(index1 == 2){
+                                  } else if (index1 == 2) {
                                     progressvalue = 0.75;
-                                  }
-                                  else if(index1 == 3){
+                                  } else if (index1 == 3) {
                                     progressvalue = 1.0;
                                   }
                                 });
                               },
                               itemBuilder: (BuildContext context, int index) {
-                                
                                 return ClipRRect(
-                                  
                                   borderRadius: BorderRadius.circular(30),
                                   child: GestureDetector(
                                     onTap: () {
@@ -121,8 +96,7 @@ class _IntroPageState extends State<IntroPage> {
                                     child: Image(
                                       image: AssetImage(
                                           "assets/${imageNames[index]}.png"),
-                                      width:
-                                          MediaQuery.of(context).size.width,
+                                      width: MediaQuery.of(context).size.width,
                                       fit: BoxFit.contain,
                                     ),
                                   ),
@@ -139,66 +113,55 @@ class _IntroPageState extends State<IntroPage> {
                             children: <Widget>[
                               GestureDetector(
                                 onTap: () {
-                                  if(progressvalue == 0.25){
+                                  if (progressvalue == 0.25) {
                                     _controller.jumpToPage(1);
-                                    }
-                                    else if(progressvalue == 0.50){
+                                  } else if (progressvalue == 0.50) {
                                     _controller.jumpToPage(2);
-                                    }
-                                    else if(progressvalue == 0.75){
+                                  } else if (progressvalue == 0.75) {
                                     _controller.jumpToPage(3);
-                                    }
-                                  else if(progressvalue == 1)
-                                  {
+                                  } else if (progressvalue == 1) {
                                     print(progressvalue);
                                     Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Home()),
-                                  );
-
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Home()),
+                                    );
                                   }
-                                  
-                                  
                                 },
-                                child: Stack(children: [
-                                  Align(
-                                  alignment: Alignment.center,
-                                    child: Container(
-                                    height: 50,
-                                    width: 50,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      color: Colors.white70
+                                child: Stack(
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: Container(
+                                          height: 50,
+                                          width: 50,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                              color: Colors.white70),
+                                          child: Icon(Icons.arrow_forward,
+                                              color: Colors.black, size: 30)),
                                     ),
-                                    child: Icon(Icons.arrow_forward,color: Colors.black, size: 30)),
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: Container(
+                                          height: 53,
+                                          width: 53,
+                                          child: CircularProgressIndicator(
+                                            value: progressvalue,
+                                            valueColor: AlwaysStoppedAnimation(
+                                                Colors.red),
+                                          )),
+                                    )
+                                  ],
                                 ),
-                                Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                  height: 53,
-                                  width: 53,
-                                  child: CircularProgressIndicator(
-                                    value: progressvalue,
-                                    valueColor: AlwaysStoppedAnimation(Colors.red),
-                                    
-                                    // backgroundColor: Colors.purple,
-                                    )),
-
-                              )
-
-                                ],),
-                                
-                                
                               ),
-                              
                             ],
                           ),
                         ),
                       ],
                     ),
                   ),
-                  
                 ],
               ),
             ),
