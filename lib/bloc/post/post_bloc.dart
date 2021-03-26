@@ -19,28 +19,18 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   ) async* {
     // TODO: implement mapEventToState
     if (event is UploadingEvent) {
-  WidgetsFlutterBinding.ensureInitialized(); 
-  
-  await FlutterConfig.loadEnvVariables();
-  print(FlutterConfig.variables);
-  print(FlutterConfig.get("emi"));
-
-
-
       yield Uploadstarted();
-      String docName =  await api.create_record(event.caption,event.facebook,event.instagram,event.twitter) ;
+      String docName = await api.create_record(
+          event.caption, event.facebook, event.instagram, event.twitter);
       if (docName == "error") {
         yield Uploadingstop();
       } else {
-        if(event.image)
-        {
+        if (event.image) {
           yield Uploading();
-          await api.uploaddata(event.base64,event.imagename,docName);
+          await api.uploaddata(event.base64, event.imagename, docName);
           await api.update_to_field(docName, event.imagename);
           yield Uploaded();
-
         }
-        
       }
     }
     if (event is PostingEvent) {
@@ -49,11 +39,10 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       yield PostingImage();
       yield Posted();
     }
-    if (event is PostProvision){
-      if(event.select == 1){
+    if (event is PostProvision) {
+      if (event.select == 1) {
         yield Postimage();
-      }
-      else{
+      } else {
         yield Posttext();
       }
     }

@@ -136,6 +136,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
                         onPressed: () => {
+                          if(facebook || twitter || instagram)
                           BlocProvider.of<PostBloc>(context)
                             ..add(UploadingEvent(
                                 widget.basee64,

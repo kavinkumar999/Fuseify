@@ -6,15 +6,16 @@ import 'package:http/http.dart' as http;
 
 class Endpoint {
   // var keye = Process.data.url;
-   
+  final String url = "http://10.0.2.2:8002/api/method/postal_hub.postal_hub.doctype.postal_post.postal_post";
+  var key = "token 1d2c48f45385e2e:a6e278617a87b81";
 
   Future<void> uploaddata(String byte, String imagename, String doc) async {
     var headers = {
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': FlutterConfig.get("key")
+      'Authorization': key
     };
     var request = http.Request(
-        'POST', Uri.parse(FlutterConfig.get("url") + ".insert_data"));
+        'POST', Uri.parse(url + ".insert_data"));
     request.bodyFields = {
       'cmd': 'uploadfile',
       'doctype': 'Postal Post',
@@ -31,8 +32,8 @@ class Endpoint {
   }
 
   Future<List<dynamic>> facebookpost() async {
-    final http.Response post = await http.get(FlutterConfig.get("url"),
-        headers: {'Authorization': FlutterConfig.get("key")});
+    final http.Response post = await http.get(url,
+        headers: {'Authorization': key});
     if (post.statusCode == 200) {
       return jsonDecode(post.body)["message"];
     } else {
@@ -44,28 +45,18 @@ class Endpoint {
   // ignore: non_constant_identifier_names
   Future<String> create_record(
       String caption, bool fb, bool insta, bool tweet) async {
-      print("///////////////////////////////////");
-      // FlutterConfig.loadEnvVariables("emi");
-      FlutterConfig.get("emi");
-      String eemi = FlutterConfig.get("emi");
-      print(eemi);
-      print(env["emi"]);
-    print(FlutterConfig.get("emi"));
-    print(FlutterConfig.get("url"));
-    print(FlutterConfig.get("KEY"));
-    print(FlutterConfig.get("emi"));
 
     final http.Response data = await http
-        .post(FlutterConfig.get("url") + ".created_doc", headers: {
-      'Authorization': FlutterConfig.get("key")
+        .post(url + ".created_doc", headers: {
+      'Authorization': key
     }, body: {
       "caption": caption,
-      "facebook": fb,
-      "insta": insta,
-      "tweet": tweet
+      "facebook": fb ? "1" : "0",
+      "insta": insta ? "1" : "0",
+      "tweet": tweet ? "1" : "0"
     });
-    print("enter");
-    print(FlutterConfig.get("url"));
+    print(jsonDecode(data.body)["message"]);
+    print(data.statusCode);
     if (data.statusCode == 200) {
       return jsonDecode(data.body)["message"];
     } else {
@@ -77,8 +68,8 @@ class Endpoint {
   Future<String> update_to_field(String doc, String imageName) async {
     try {
       final http.Response data = await http.post(
-          FlutterConfig.get("url") + ".data_to_field",
-          headers: {'Authorization': FlutterConfig.get("key")},
+          url + ".data_to_field",
+          headers: {'Authorization': key},
           body: {"doc": doc, "image": imageName});
       if (data.statusCode == 200) {
         return jsonDecode(data.body)["message"];
