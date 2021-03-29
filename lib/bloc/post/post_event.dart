@@ -13,12 +13,19 @@ class UploadingEvent extends PostEvent {
   bool instagram;
   bool twitter;
   bool image;
+  bool futuretime;
+  int hrs;
 
   UploadingEvent(this.base64, this.imagename, this.caption, this.facebook,
-      this.instagram, this.twitter, this.image);
+      this.instagram, this.twitter, this.image,this.futuretime,this.hrs);
 }
 
 class PostProvision extends PostEvent {
   int select;
   PostProvision(this.select);
+}
+
+class Futurepost extends PostEvent{
+  bool option;
+  Futurepost(this.option);
 }

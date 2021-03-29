@@ -26,3 +26,9 @@ class Uploaded extends PostState{}
 class Postimage extends PostState{}
 
 class Posttext extends PostState{}
+
+
+class Futureselection extends PostState{
+  bool option;
+  Futureselection(this.option);
+}

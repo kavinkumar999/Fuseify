@@ -1,20 +1,19 @@
+
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_config/flutter_config.dart';
+import 'package:fuseify/bloc/authenticate/authenticate_bloc.dart';
 import 'package:fuseify/bloc/post/post_bloc.dart';
 import 'package:fuseify/bloc/post_provision/post_provision_bloc.dart';
 import 'package:fuseify/bloc/stack/stack_bloc.dart';
 import 'package:fuseify/views/intro.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized(); 
-  await FlutterConfig.loadEnvVariables();
-  await DotEnv.load(fileName: ".env");
   runApp(MultiBlocProvider(
 
     providers: [
+      BlocProvider(create: (context) => AuthenticateBloc()),
       BlocProvider(create: (context) => PostBloc()),
       BlocProvider(create: (context) => PostProvisionBloc()),
       BlocProvider(create: (context) => StackBloc()),

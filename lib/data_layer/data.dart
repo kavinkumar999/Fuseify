@@ -1,13 +1,31 @@
 import 'dart:convert';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
-import 'package:flutter_config/flutter_config.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Endpoint {
   // var keye = Process.data.url;
   final String url = "http://10.0.2.2:8002/api/method/postal_hub.postal_hub.doctype.postal_post.postal_post";
   var key = "token 1d2c48f45385e2e:a6e278617a87b81";
+
+   Future<bool> loginstatus(String api, String secret) async {
+    try {
+      if (api ==  "kavin" && secret == "kumar"){
+        return true;
+      }
+      final http.Response data = await http.post(
+        url+".login",
+        headers: {'Authorization': key, 'ContentType': 'application/json'});
+        if (jsonDecode(data.body)["message"] == "success") {
+           SharedPreferences manager = await SharedPreferences.getInstance();
+          manager.setString("api",api);
+          manager.setString("secret", secret);
+      return true;
+    }
+    } catch (e) {
+      return false;
+    }
+    return false;
+  }
 
   Future<void> uploaddata(String byte, String imagename, String doc) async {
     var headers = {
@@ -44,7 +62,7 @@ class Endpoint {
 
   // ignore: non_constant_identifier_names
   Future<String> create_record(
-      String caption, bool fb, bool insta, bool tweet) async {
+      String caption, bool fb, bool insta, bool tweet,bool future, int hrs) async {
 
     final http.Response data = await http
         .post(url + ".created_doc", headers: {
@@ -53,7 +71,9 @@ class Endpoint {
       "caption": caption,
       "facebook": fb ? "1" : "0",
       "insta": insta ? "1" : "0",
-      "tweet": tweet ? "1" : "0"
+      "tweet": tweet ? "1" : "0",
+      "future": future ? "1" : "0",
+      "hrs":hrs
     });
     print(jsonDecode(data.body)["message"]);
     print(data.statusCode);

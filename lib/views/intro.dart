@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fuseify/views/home.dart';
+import 'package:fuseify/views/login.dart';
 
 double progressvalue = 0.25;
 
@@ -124,7 +125,7 @@ class _IntroPageState extends State<IntroPage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Home()),
+                                          builder: (context) => LoginPage()),
                                     );
                                   }
                                 },

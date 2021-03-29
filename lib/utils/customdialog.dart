@@ -6,22 +6,24 @@ import 'package:fuseify/bloc/post/post_bloc.dart';
 
 class CustomDialogBox extends StatefulWidget {
   final String basee64, imagename, text;
-  final bool img;
+  final bool img,future;
+  final int hrs;
 
   const CustomDialogBox(
-      {Key key, this.basee64, this.imagename, this.text, this.img})
+      {Key key, this.basee64, this.imagename, this.text, this.img, this.future,this.hrs})
       : super(key: key);
 
   @override
   _CustomDialogBoxState createState() => _CustomDialogBoxState();
 }
 
-bool all = false;
+
+
+class _CustomDialogBoxState extends State<CustomDialogBox> {
+  bool all = false;
 bool facebook = false;
 bool twitter = false;
 bool instagram = false;
-
-class _CustomDialogBoxState extends State<CustomDialogBox> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -116,7 +118,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                           Text("Twitter")
                         ],
                       ),
-                      Row(
+                      widget.img ? Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Checkbox(
@@ -130,7 +132,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                           ),
                           Text("Instagram")
                         ],
-                      ),
+                      ): SizedBox(),
                       FlatButton(
                         // elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -145,7 +147,11 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                                 facebook,
                                 instagram,
                                 twitter,
-                                widget.img)),
+                                widget.img,
+                                widget.future,
+                                widget.hrs
+                                )),
+                                
                           Navigator.pop(context)
                         },
                         color: Colors.pink,
