@@ -10,7 +10,7 @@
   <p align="center">
     Connect socially using single touch ! 
     <br />
-    <a href=""><strong>Explore the docs »</strong></a>
+    <a href="https://flutter.dev/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
   </p>
