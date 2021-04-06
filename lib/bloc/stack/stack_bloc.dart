@@ -1,7 +1,6 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:fuseify/utils/customdialog.dart';
+import 'package:fuseify/data_layer/data.dart';
 import 'package:meta/meta.dart';
 
 part 'stack_event.dart';
@@ -14,8 +13,10 @@ class StackBloc extends Bloc<StackEvent, StackState> {
   Stream<StackState> mapEventToState(
     StackEvent event,
   ) async* {
+  Endpoint api = new Endpoint();
     // TODO: implement mapEventToState
     if(event is Mediaoption){
+
       if(event.media == "Facebook"){
           yield Facebook();
       }
@@ -29,6 +30,11 @@ class StackBloc extends Bloc<StackEvent, StackState> {
       else{
         yield Allpost();
       }
+    }
+    if(event is Stackimage){
+      print("///////////////");
+      List<dynamic> arra =  await api.stack();
+      yield Imagelist(arra);
     }
   }
 }

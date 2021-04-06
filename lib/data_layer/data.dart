@@ -62,7 +62,7 @@ class Endpoint {
 
   // ignore: non_constant_identifier_names
   Future<String> create_record(
-      String caption, bool fb, bool insta, bool tweet,bool future, int hrs) async {
+      String caption, bool fb, bool insta, bool tweet,bool future, String hrs) async {
 
     final http.Response data = await http
         .post(url + ".created_doc", headers: {
@@ -75,7 +75,7 @@ class Endpoint {
       "future": future ? "1" : "0",
       "hrs":hrs
     });
-    print(jsonDecode(data.body)["message"]);
+    // print(jsonDecode(data.body)["message"]);
     print(data.statusCode);
     if (data.statusCode == 200) {
       return jsonDecode(data.body)["message"];
@@ -100,4 +100,44 @@ class Endpoint {
       return "error";
     }
   }
+
+
+  Future<List<dynamic>> stack () async{
+     try {
+      final http.Response data = await http.get(
+          url + ".stackpost",
+          headers: {'Authorization': key},);
+    print(jsonDecode(data.body)["message"]);
+
+      if (data.statusCode == 200) {
+        return jsonDecode(data.body)["message"];
+      } else {
+        return ["error"];
+      }
+    } catch (e) {
+      return ["error"];
+    }
+
+  }
+
+
+  Future<void> post (String doc) async{
+     try {
+      final http.Response data = await http.post(
+          url + ".post",
+          headers: {'Authorization': key},
+          body: {"docname":doc});
+
+      if (data.statusCode == 200) {
+        return jsonDecode(data.body)["message"];
+      } else {
+        return ["error"];
+      }
+    } catch (e) {
+      return ["error"];
+    }
+
+  }
+
 }
+

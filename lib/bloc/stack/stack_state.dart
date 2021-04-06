@@ -13,3 +13,9 @@ class Facebook extends StackState{}
 class Instagram extends StackState{}
 
 class Twitter extends StackState{}
+
+class Imagelist extends StackState{
+  List<dynamic> a;
+
+  Imagelist(this.a);
+}
