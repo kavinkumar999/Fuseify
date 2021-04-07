@@ -38,6 +38,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
           await api.update_to_field(docName, event.imagename);
           yield Uploaded();
         }
+        if(event.futuretime == false)
         await  api.post(docName);
         Fluttertoast.showToast(
         msg: "Posted",
