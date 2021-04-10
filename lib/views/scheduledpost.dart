@@ -64,8 +64,20 @@ class _NotificationsState extends State<Notifications>  {
     'assets/posts/4.jpg',
   ];
 
-  Widget item({String image,String caption,double hours}) {
+  Widget item({String image,String caption,double hours ,bool cur}) {
     int _hour = hours.toInt();
+    print(cur);
+    int oss = 0;
+    List period = ["hours","days","min"];
+    if(_hour >= 24){
+      var val = (_hour/24).round();
+      _hour = val;
+      oss = 1;
+
+    }
+    if(cur == true){
+      oss = 2;
+    }
     return GestureDetector(
       onTap: () {
         print(image);
@@ -88,7 +100,7 @@ class _NotificationsState extends State<Notifications>  {
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   SizedBox(height: 10),
-                  Text('$_hour'+' hours ago', style: TextStyle(color: Colors.black))
+                  Text('$_hour'+ ' ${period[oss]}' +' ago', style: TextStyle(color: Colors.black))
                 ],
               ),
             ),
@@ -184,7 +196,7 @@ class _NotificationsState extends State<Notifications>  {
                                 ),
                                 SizedBox(width: 20),
                                 // badge ?? SizedBox(),
-                                badge(arr.length),
+                                badge(arr.length == null ? 0 : arr.length),
                               ],
                             ),
                           ),
@@ -244,7 +256,7 @@ class _NotificationsState extends State<Notifications>  {
                                     if(arr[index][3] == 0){
                                       return SizedBox();
                                     }
-                                    return  item(image: images[index],caption: arr[index][1],hours: arr[index][6]);
+                                    return  item(image: images[index],caption: arr[index][1],hours: arr[index][6],cur: arr[index][7]);
 
 
                                   }
@@ -252,7 +264,7 @@ class _NotificationsState extends State<Notifications>  {
                                     if(arr[index][4] == 0){
                                       return SizedBox();
                                     }
-                                    return  item(image: images[index],caption: arr[index][1],hours: arr[index][6]);
+                                    return  item(image: images[index],caption: arr[index][1],hours: arr[index][6],cur: arr[index][7]);
 
 
                                   }
@@ -260,10 +272,10 @@ class _NotificationsState extends State<Notifications>  {
                                      if(arr[index][5] == 0){
                                       return SizedBox();
                                     }
-                                    return  item(image: images[index],caption: arr[index][1],hours: arr[index][6]);
+                                    return  item(image: images[index],caption: arr[index][1],hours: arr[index][6],cur: arr[index][7]);
 
                                   }
-                                  return  item(image: images[index],caption: arr[index][1],hours: arr[index][6]);
+                                  return  item(image: images[index],caption: arr[index][1],hours: arr[index][6],cur: arr[index][7]);
                                 },
                               ),
                             ),

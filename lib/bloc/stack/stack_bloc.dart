@@ -32,7 +32,6 @@ class StackBloc extends Bloc<StackEvent, StackState> {
       }
     }
     if(event is Stackimage){
-      print("///////////////");
       List<dynamic> arra =  await api.stack();
       yield Imagelist(arra);
     }
