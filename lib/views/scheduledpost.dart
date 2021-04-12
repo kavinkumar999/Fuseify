@@ -5,6 +5,7 @@ import 'package:fuseify/utils/Colors.dart';
 import 'package:fuseify/utils/common.dart';
 import 'package:fuseify/views/post.dart';
 
+List<dynamic> arr;
 Widget badge(int count) {
   return Container(
     padding: EdgeInsets.fromLTRB(10, 8, 10, 8),
@@ -41,7 +42,7 @@ void navigate(context, String res) {
   }
 }
 
-List<dynamic> arr;
+
 class Notifications extends StatefulWidget {
   @override
   _NotificationsState createState() => _NotificationsState();
@@ -196,7 +197,7 @@ class _NotificationsState extends State<Notifications>  {
                                 ),
                                 SizedBox(width: 20),
                                 // badge ?? SizedBox(),
-                                badge(arr.length == null ? 0 : arr.length),
+                                badge(arr == null ? 0 : arr.length),
                               ],
                             ),
                           ),
@@ -250,7 +251,7 @@ class _NotificationsState extends State<Notifications>  {
                                 // primary: false,
                                 separatorBuilder: (_, __) =>
                                     SizedBox(height: 46),
-                                itemCount: arr.length == null ? 0:arr.length,
+                                itemCount: arr == null ? 0:arr.length,
                                 itemBuilder: (context, index) {
                                   if(currentFilter == "Facebook"){
                                     if(arr[index][3] == 0){
