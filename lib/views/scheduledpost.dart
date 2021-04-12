@@ -51,7 +51,6 @@ class Notifications extends StatefulWidget {
 class _NotificationsState extends State<Notifications>  {
   final filters = ["All Posted", "Facebook", "Twitter", "Instagram"];
   String currentFilter = "All Posted";
-  // BlocProvider.of<PostBloc>(context)..add(PostProvision(value));
 
   List images = [
     'assets/posts/3.jpg',

@@ -517,6 +517,9 @@ class _PostState extends State<Post> {
 
                                       );
                                     }),
+                                    _controller.text = "",
+                                  future = false,
+                                  imgname = ""
 
                                 // BlocProvider.of<PostBloc>(context)..add(UploadingEvent(base64Encode(_image.readAsBytesSync()),imgname,_controller.text,true,true,true)),
                               },
@@ -772,6 +775,10 @@ class _PostState extends State<Post> {
                                       hrs: posttime,
                                     );
                                   }),
+                                  _controller.text = "",
+                                  future = false,
+                                  imgname = ""
+
 
                               // BlocProvider.of<PostBloc>(context)..add(UploadingEvent(base64Encode(_image.readAsBytesSync()),imgname,_controller.text)),
                             },
