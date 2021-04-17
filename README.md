@@ -41,7 +41,7 @@ we are introduce the app “Fuseify”,the real social media integration to help
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase. Flutter's hot reload helps you quickly and easily experiment, build UIs, add features, and fix bugs faster
 * [Flutter](https://flutter.dev/)
 
 
@@ -70,15 +70,18 @@ Run the application using the following command
 <!-- EXAMPLES -->
 ## Screenshots
 
-
+ <img src="flutter_01.png" alt="Logo" width="80" height="80"> 
+ <img src="flutter_02.png" alt="Logo" width="80" height="80"> 
+ <img src="flutter_03.png" alt="Logo" width="80" height="80">
+ <img src="flutter_04.png" alt="Logo" width="80" height="80">
 
 
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@kavinkumar](https://github.com/kavinkumar999) 
+[@kavinkumar](https://github.com/kavinkumar999) 
 
-Application Link 
+[Application Link] 
 
 
