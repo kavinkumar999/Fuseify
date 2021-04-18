@@ -70,10 +70,10 @@ Run the application using the following command
 <!-- EXAMPLES -->
 ## Screenshots
 
- <img src="flutter_01.png" alt="Logo" width="80" height="80"> 
- <img src="flutter_02.png" alt="Logo" width="80" height="80"> 
- <img src="flutter_03.png" alt="Logo" width="80" height="80">
- <img src="flutter_04.png" alt="Logo" width="80" height="80">
+ <img src="flutter_01.png" alt="image1" > 
+ <img src="flutter_02.png" alt="image2" > 
+ <img src="flutter_03.png" alt="image3">
+ <img src="flutter_04.png" alt="image4" >
 
 
 
