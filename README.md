@@ -71,9 +71,9 @@ Run the application using the following command
 ## Screenshots
 <div align = "left" >
     <img src="flutter_01.png" style="margin-right: 130px"  alt="image1" width="400" height="600" > 
-   <img src="flutter_02.png" style="margin-right: 130px"  alt="image2" width="400" height="600"  > 
- <img src="flutter_03.png" style="margin-right: 130px" alt="image3"  width="400" height="600" >
-   <img src="flutter_04.png" style="margin-right: 130px"  alt="image4"  width="400" height="600"  >
+    <img src="flutter_02.png" style="margin-right: 130px"  alt="image2" width="400" height="600"  > 
+    <img src="flutter_03.png" style="margin-right: 130px" alt="image3"  width="400" height="600" >
+    <img src="flutter_04.png" style="margin-right: 130px"  alt="image4"  width="400" height="600"  >
   
   
   
