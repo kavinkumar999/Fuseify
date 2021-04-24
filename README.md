@@ -69,18 +69,19 @@ Run the application using the following command
 
 <!-- EXAMPLES -->
 ## Screenshots
-<div >
+<div align = "left" >
     <img src="flutter_01.png" style="margin-right: 30px"  alt="image1" width="400" height="600" > 
 </div>
-<div  >
+
+<div align = "right" >
    <img src="flutter_02.png" style="margin-right: 30px"  alt="image2" width="400" height="600"  > 
   
 </div>
-<div >
+<div align = "left">
  <img src="flutter_03.png" style="margin-right: 30px" alt="image3"  width="400" height="600" >
   
 </div>
-<div  >
+<div  align = "right">
    <img src="flutter_04.png" style="margin-right: 30px"  alt="image4"  width="400" height="600"  >
 
 </div>
