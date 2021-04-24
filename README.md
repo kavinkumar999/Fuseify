@@ -62,7 +62,7 @@ Go to project root and execute the following command in console to get the requi
    ```
 ### Step 3
 Run the application using the following command
-    ```sh   
+   ```sh   
    flutter run
    ```
 
