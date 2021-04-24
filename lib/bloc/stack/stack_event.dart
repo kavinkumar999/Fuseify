@@ -9,3 +9,5 @@ class Mediaoption extends StackEvent{
     this.media,
   );
 }
+
+class Stackimage extends StackEvent{}

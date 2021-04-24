@@ -5,6 +5,7 @@ import 'package:fuseify/utils/Colors.dart';
 import 'package:fuseify/utils/common.dart';
 import 'package:fuseify/views/post.dart';
 
+List<dynamic> arr;
 Widget badge(int count) {
   return Container(
     padding: EdgeInsets.fromLTRB(10, 8, 10, 8),
@@ -41,12 +42,13 @@ void navigate(context, String res) {
   }
 }
 
+
 class Notifications extends StatefulWidget {
   @override
   _NotificationsState createState() => _NotificationsState();
 }
 
-class _NotificationsState extends State<Notifications> {
+class _NotificationsState extends State<Notifications>  {
   final filters = ["All Posted", "Facebook", "Twitter", "Instagram"];
   String currentFilter = "All Posted";
 
@@ -62,7 +64,20 @@ class _NotificationsState extends State<Notifications> {
     'assets/posts/4.jpg',
   ];
 
-  Widget item({String image}) {
+  Widget item({String image,String caption,double hours ,bool cur}) {
+    int _hour = hours.toInt();
+    print(cur);
+    int oss = 0;
+    List period = ["hours","days","min"];
+    if(_hour >= 24){
+      var val = (_hour/24).round();
+      _hour = val;
+      oss = 1;
+
+    }
+    if(cur == true){
+      oss = 2;
+    }
     return GestureDetector(
       onTap: () {
         print(image);
@@ -81,11 +96,11 @@ class _NotificationsState extends State<Notifications> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'Hi, I m kavin kumar from Computer science and Engineering ! :)"',
+                    '$caption',
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   SizedBox(height: 10),
-                  Text('2 hours ago', style: TextStyle(color: Colors.black))
+                  Text('$_hour'+ ' ${period[oss]}' +' ago', style: TextStyle(color: Colors.black))
                 ],
               ),
             ),
@@ -98,7 +113,9 @@ class _NotificationsState extends State<Notifications> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    BlocProvider.of<StackBloc>(context)..add(Stackimage());
+
+   return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -106,14 +123,21 @@ class _NotificationsState extends State<Notifications> {
             bottom: false,
             child: BlocConsumer<StackBloc, StackState>(
               listener: (context, state) {
+                if(state is Imagelist){
+                  arr = state.a;
+                }
                 // TODO: implement listener
               },
               builder: (context, state) {
+                if(state is Imagelist){
+                  arr = state.a;
+                  print(arr);
+                }
                 if (state is Allpost) {
                   currentFilter = "All Posted";
                 }
                 if (state is Facebook) {
-                  images = ["assets/connect.jpg"];
+                  // images = ["assets/connect.jpg"];
                   currentFilter = "Facebook";
                 }
                 if (state is Twitter) {
@@ -134,10 +158,7 @@ class _NotificationsState extends State<Notifications> {
                         children: <Widget>[
                           InkWell(
                             onTap: () => {
-                              if (false)
-                                {navigate(context, "scheduledpost")}
-                              else
-                                {navigate(context, "res")}
+                                navigate(context, "res")
                             },
                             child: Icon(
                               Icons.chevron_left,
@@ -175,7 +196,7 @@ class _NotificationsState extends State<Notifications> {
                                 ),
                                 SizedBox(width: 20),
                                 // badge ?? SizedBox(),
-                                badge(12),
+                                badge(arr == null ? 0 : arr.length),
                               ],
                             ),
                           ),
@@ -193,6 +214,7 @@ class _NotificationsState extends State<Notifications> {
                                 bool active = currentFilter == filter;
                                 return GestureDetector(
                                   onTap: () {
+
                                     print(filter);
                                     BlocProvider.of<StackBloc>(context)
                                       ..add(Mediaoption(filter));
@@ -228,9 +250,32 @@ class _NotificationsState extends State<Notifications> {
                                 // primary: false,
                                 separatorBuilder: (_, __) =>
                                     SizedBox(height: 46),
-                                itemCount: images.length,
+                                itemCount: arr == null ? 0:arr.length,
                                 itemBuilder: (context, index) {
-                                  return item(image: images[index]);
+                                  if(currentFilter == "Facebook"){
+                                    if(arr[index][3] == 0){
+                                      return SizedBox();
+                                    }
+                                    return  item(image: images[index],caption: arr[index][1],hours: arr[index][6],cur: arr[index][7]);
+
+
+                                  }
+                                  if(currentFilter == "Instagram"){
+                                    if(arr[index][4] == 0){
+                                      return SizedBox();
+                                    }
+                                    return  item(image: images[index],caption: arr[index][1],hours: arr[index][6],cur: arr[index][7]);
+
+
+                                  }
+                                  if(currentFilter == "Twitter"){
+                                     if(arr[index][5] == 0){
+                                      return SizedBox();
+                                    }
+                                    return  item(image: images[index],caption: arr[index][1],hours: arr[index][6],cur: arr[index][7]);
+
+                                  }
+                                  return  item(image: images[index],caption: arr[index][1],hours: arr[index][6],cur: arr[index][7]);
                                 },
                               ),
                             ),
@@ -244,5 +289,7 @@ class _NotificationsState extends State<Notifications> {
             )),
       ),
     );
+
+    
   }
 }

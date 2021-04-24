@@ -45,6 +45,9 @@ class _PostState extends State<Post> {
         backgroundColor: Colors.white,
         body: BlocConsumer<PostBloc, PostState>(
           listener: (context, state) {
+            if(state is PostInitial){
+              selection = 1;
+            }
             if(state is Futureselection){
               future = state.option;
             }
@@ -55,16 +58,12 @@ class _PostState extends State<Post> {
             if (state is Posttext) {
               selection = 2;
             }
+
             // TODO: implement listener
           },
           builder: (context, state) {
             String imgname;
             
-            // if(state is Uploadstarted){
-            //   return Center(child: Scaffold(
-            //     backgroundColor: Colors.transparent,
-            //     body: Center(child: CircularProgressIndicator())));
-            // }
             if (state is Postimage) {
               return SafeArea(
                 bottom: false,
@@ -295,6 +294,8 @@ class _PostState extends State<Post> {
                                         imagename: imgname,
                                         text: _controller.text,
                                         img: true,
+                                        future: future,
+                                        hrs: posttime,
                                       );
                                     }),
 
@@ -511,8 +512,14 @@ class _PostState extends State<Post> {
                                         imagename: "imgname",
                                         text: _controller.text,
                                         img: false,
+                                        future: future,
+                                        hrs: posttime,
+
                                       );
                                     }),
+                                    _controller.text = "",
+                                  future = false,
+                                  imgname = ""
 
                                 // BlocProvider.of<PostBloc>(context)..add(UploadingEvent(base64Encode(_image.readAsBytesSync()),imgname,_controller.text,true,true,true)),
                               },
@@ -768,6 +775,10 @@ class _PostState extends State<Post> {
                                       hrs: posttime,
                                     );
                                   }),
+                                  _controller.text = "",
+                                  future = false,
+                                  imgname = ""
+
 
                               // BlocProvider.of<PostBloc>(context)..add(UploadingEvent(base64Encode(_image.readAsBytesSync()),imgname,_controller.text)),
                             },
