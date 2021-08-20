@@ -89,7 +89,7 @@ Run the application using the following command
 
 
 <!-- CONTACT -->
-## Contact
+## Developer
 
 [@kavinkumar](https://github.com/kavinkumar999) 
 
